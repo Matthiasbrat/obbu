@@ -57,7 +57,7 @@ export default function ServicesPage() {
         description="Service catalog with SLA and health metrics"
       />
 
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6 animate-fade-in">
         {/* Filter tabs */}
         <div className="flex items-center gap-1 p-1 bg-card rounded-lg border border-border-subtle w-fit">
           {filterTabs.map((tab) => (
@@ -96,10 +96,10 @@ export default function ServicesPage() {
                   <th className="text-left text-xs font-medium text-muted-foreground px-4 py-3">
                     Service
                   </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground px-4 py-3">
+                  <th className="hidden md:table-cell text-left text-xs font-medium text-muted-foreground px-4 py-3">
                     Tier
                   </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground px-4 py-3">
+                  <th className="hidden md:table-cell text-left text-xs font-medium text-muted-foreground px-4 py-3">
                     Team
                   </th>
                   <th className="text-left text-xs font-medium text-muted-foreground px-4 py-3">
@@ -111,10 +111,10 @@ export default function ServicesPage() {
                   <th className="text-right text-xs font-medium text-muted-foreground px-4 py-3">
                     P99 Latency
                   </th>
-                  <th className="text-right text-xs font-medium text-muted-foreground px-4 py-3">
+                  <th className="hidden lg:table-cell text-right text-xs font-medium text-muted-foreground px-4 py-3">
                     Throughput
                   </th>
-                  <th className="text-right text-xs font-medium text-muted-foreground px-4 py-3 w-28">
+                  <th className="hidden sm:table-cell text-right text-xs font-medium text-muted-foreground px-4 py-3 w-28">
                     Trend
                   </th>
                 </tr>
@@ -151,7 +151,7 @@ export default function ServicesPage() {
                       </td>
 
                       {/* Tier */}
-                      <td className="px-4 py-3">
+                      <td className="hidden md:table-cell px-4 py-3">
                         <span
                           className={clsx(
                             'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium',
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                       </td>
 
                       {/* Team */}
-                      <td className="px-4 py-3 text-sm text-muted-foreground">
+                      <td className="hidden md:table-cell px-4 py-3 text-sm text-muted-foreground">
                         {service.team}
                       </td>
 
@@ -217,12 +217,12 @@ export default function ServicesPage() {
                       </td>
 
                       {/* Throughput */}
-                      <td className="px-4 py-3 text-right text-sm font-mono text-muted-foreground">
+                      <td className="hidden lg:table-cell px-4 py-3 text-right text-sm font-mono text-muted-foreground">
                         {formatThroughput(service.throughput)}/s
                       </td>
 
                       {/* Sparkline */}
-                      <td className="px-4 py-3 text-right">
+                      <td className="hidden sm:table-cell px-4 py-3 text-right">
                         <Sparkline
                           data={service.sparklineData}
                           color={statusSparklineColor[service.status]}

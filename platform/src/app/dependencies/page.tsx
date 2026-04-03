@@ -106,9 +106,9 @@ export default function DependenciesPage() {
         title="Dependencies"
         description="Service topology and dependency graph"
       />
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 animate-fade-in">
         {/* Stats bar */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
             {
               label: 'Total Nodes',
@@ -162,7 +162,7 @@ export default function DependenciesPage() {
         </div>
 
         {/* Main graph + side panel */}
-        <div className="flex gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
           {/* SVG Graph */}
           <div
             className={clsx(
@@ -170,6 +170,8 @@ export default function DependenciesPage() {
               selectedNode ? 'min-w-0' : ''
             )}
           >
+            <div className="overflow-x-auto">
+            <div className="min-w-[700px]">
             <svg
               viewBox="0 0 1050 700"
               className="w-full h-auto"
@@ -402,11 +404,13 @@ export default function DependenciesPage() {
                 `}
               </style>
             </svg>
+            </div>
+            </div>
           </div>
 
           {/* Side panel */}
           {selectedNodeData && (
-            <div className="w-[300px] shrink-0 rounded-xl border border-border-subtle bg-card p-5 space-y-5 self-start">
+            <div className="w-full lg:w-[300px] shrink-0 rounded-xl border border-border-subtle bg-card p-5 space-y-5 self-start">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-semibold text-foreground">
                   Node Details
@@ -534,7 +538,7 @@ export default function DependenciesPage() {
         </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap items-center gap-6 rounded-xl border border-border-subtle bg-card p-4">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 rounded-xl border border-border-subtle bg-card p-4">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
             Node Types
           </span>

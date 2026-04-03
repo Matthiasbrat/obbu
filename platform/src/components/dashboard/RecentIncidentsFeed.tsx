@@ -35,7 +35,7 @@ export function RecentIncidentsFeed() {
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-medium text-muted-foreground">{incident.id}</span>
                   <StatusBadge status={incident.status} />
-                  <StatusBadge status={incident.severity} />
+                  <span className="hidden sm:inline"><StatusBadge status={incident.severity} /></span>
                 </div>
                 <span className="text-[10px] text-muted-foreground flex items-center gap-1">
                   <Clock className="w-3 h-3" />

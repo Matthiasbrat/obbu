@@ -9,7 +9,7 @@ export function ActiveIncidentBanner() {
 
   return (
     <Link href={`/incidents/${activeIncident.id}`}>
-      <div className="bg-danger-muted border border-danger/20 rounded-xl px-6 py-4 flex items-center justify-between hover:border-danger/40 transition-colors group">
+      <div className="bg-danger-muted border border-danger/20 rounded-xl px-4 py-3 sm:px-6 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between hover:border-danger/40 transition-colors group gap-3">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-danger/20 flex items-center justify-center">
             <AlertTriangle className="w-5 h-5 text-danger" />
@@ -32,7 +32,7 @@ export function ActiveIncidentBanner() {
             </div>
           </div>
         </div>
-        <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+        <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors hidden sm:block" />
       </div>
     </Link>
   );

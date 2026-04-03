@@ -119,9 +119,9 @@ export default function IncidentsPage() {
         description="Correlated incidents with AI-assisted root cause analysis"
       />
 
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 animate-fade-in">
         {/* Stats bar */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
@@ -176,7 +176,7 @@ export default function IncidentsPage() {
                 {/* Left section */}
                 <div className="flex-1 space-y-3">
                   {/* Top row: ID, severity, status */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-xs font-mono text-muted-foreground">{incident.id}</span>
                     <StatusBadge status={incident.severity} />
                     <StatusBadge status={incident.status} />
@@ -192,7 +192,7 @@ export default function IncidentsPage() {
                   <p className="text-xs text-muted-foreground">{incident.businessImpact}</p>
 
                   {/* Bottom meta */}
-                  <div className="flex items-center gap-4 text-xs text-muted">
+                  <div className="flex items-center gap-4 text-xs text-muted flex-wrap">
                     <span className="flex items-center gap-1">
                       <Server className="h-3 w-3" />
                       {incident.affectedServices.length} service{incident.affectedServices.length !== 1 ? 's' : ''}

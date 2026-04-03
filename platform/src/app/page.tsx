@@ -14,7 +14,7 @@ export default function DashboardPage() {
         title="Overview"
         description="Business-to-technical observability at a glance"
       />
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 animate-fade-in">
         {/* Active incident banner */}
         <ActiveIncidentBanner />
 
@@ -22,25 +22,25 @@ export default function DashboardPage() {
         <OverviewStats />
 
         {/* Main content grid */}
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Service health - 8 cols */}
-          <div className="col-span-8">
+          <div className="col-span-1 lg:col-span-8">
             <ServiceHealthGrid />
           </div>
 
           {/* Right sidebar - 4 cols */}
-          <div className="col-span-4 space-y-6">
+          <div className="col-span-1 lg:col-span-4 space-y-6">
             <CorrelationLayersViz />
             <TelemetrySourcesPanel />
           </div>
         </div>
 
         {/* Bottom row */}
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="col-span-1 lg:col-span-8">
             <BusinessImpactSummary />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-1 lg:col-span-4">
             <RecentIncidentsFeed />
           </div>
         </div>
