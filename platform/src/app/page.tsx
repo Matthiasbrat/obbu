@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import { OverviewStats } from '@/components/dashboard/OverviewStats';
+import { WidgetGrid } from '@/components/plugins/WidgetGrid';
 import { ServiceHealthGrid } from '@/components/dashboard/ServiceHealthGrid';
 import { ActiveIncidentBanner } from '@/components/dashboard/ActiveIncidentBanner';
 import { CorrelationLayersViz } from '@/components/dashboard/CorrelationLayersViz';
@@ -20,6 +21,9 @@ export default function DashboardPage() {
 
         {/* Key metrics */}
         <OverviewStats />
+
+        {/* Plugin widgets */}
+        <WidgetGrid />
 
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
