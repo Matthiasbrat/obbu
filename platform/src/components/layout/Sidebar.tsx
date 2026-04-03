@@ -11,6 +11,7 @@ import {
   Activity,
   Radio,
   X,
+  Puzzle,
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useSidebar } from './SidebarContext';
@@ -21,6 +22,7 @@ const navigation = [
   { name: 'Dependencies', href: '/dependencies', icon: GitBranch },
   { name: 'Business', href: '/business', icon: Briefcase },
   { name: 'Incidents', href: '/incidents', icon: AlertTriangle },
+  { name: 'Plugins', href: '/settings/plugins', icon: Puzzle },
 ];
 
 export function Sidebar() {
