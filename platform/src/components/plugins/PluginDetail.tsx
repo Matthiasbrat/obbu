@@ -576,7 +576,7 @@ export default function PluginDetail() {
           )}
 
           {/* Stats row */}
-          <div className="flex items-center gap-6 text-xs text-muted-foreground border-t border-border-subtle pt-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs text-muted-foreground border-t border-border-subtle pt-4">
             <span className="flex items-center gap-1.5">
               <Download className="w-3.5 h-3.5" />
               {plugin.installCount.toLocaleString()} installs

@@ -26,7 +26,7 @@ export function ServiceHealthGrid() {
       <div className="divide-y divide-border-subtle">
         {services.map((service) => (
           <Link key={service.id} href={`/services/${service.id}`}>
-            <div className="px-5 py-3.5 flex items-center gap-4 hover:bg-card-hover transition-colors group flex-wrap">
+            <div className="px-3 sm:px-5 py-3 sm:py-3.5 flex items-center gap-3 sm:gap-4 hover:bg-card-hover transition-colors group">
               <StatusDot status={service.status} />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
@@ -37,13 +37,21 @@ export function ServiceHealthGrid() {
                     {service.tier}
                   </span>
                 </div>
-                <span className="text-xs text-muted-foreground">{service.team}</span>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <span>{service.team}</span>
+                  <span className="sm:hidden font-mono">
+                    <span className={service.errorRate > 1 ? 'text-danger' : service.errorRate > 0.1 ? 'text-warning' : ''}>
+                      {service.errorRate}%
+                    </span>
+                    {' err'}
+                  </span>
+                </div>
               </div>
               <div className="hidden sm:block text-right mr-4">
                 <div className="text-xs text-muted-foreground">P99 Latency</div>
                 <div className="text-sm font-mono font-medium">{service.latencyP99}ms</div>
               </div>
-              <div className="text-right mr-4">
+              <div className="hidden sm:block text-right mr-4">
                 <div className="text-xs text-muted-foreground">Error Rate</div>
                 <div className={`text-sm font-mono font-medium ${service.errorRate > 1 ? 'text-danger' : service.errorRate > 0.1 ? 'text-warning' : 'text-foreground'}`}>
                   {service.errorRate}%
