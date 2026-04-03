@@ -7,7 +7,7 @@ import { usePlugins } from '@/lib/plugins/context';
 import type { Plugin, PluginCategory } from '@/lib/plugins/types';
 import {
   GitBranch,
-  Github,
+  GitFork,
   MessageSquare,
   Siren,
   Ticket,
@@ -26,7 +26,6 @@ import {
   FileBarChart,
   Puzzle,
   Download,
-  CheckCircle2,
   Settings2,
   Blocks,
 } from 'lucide-react';
@@ -36,7 +35,7 @@ import {
 // ---------------------------------------------------------------------------
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   GitBranch,
-  Github,
+  GitFork,
   MessageSquare,
   Siren,
   Ticket,

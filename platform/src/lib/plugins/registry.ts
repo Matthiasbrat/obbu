@@ -57,7 +57,7 @@ export const defaultPlugins: Plugin[] = [
 - Release tracking and changelog generation
 - Webhook support for real-time updates`,
     category: 'integration',
-    icon: 'Github',
+    icon: 'GitFork',
     version: '3.1.0',
     author: 'Obbu Core',
     status: 'enabled',
@@ -112,7 +112,6 @@ export const defaultPlugins: Plugin[] = [
       { id: 'slack-incident', name: 'Incident Notifications', direction: 'outbound', url: 'https://hooks.slack.com/services/...', events: ['incident.created', 'incident.resolved'], active: true },
       { id: 'slack-rca', name: 'RCA Notifications', direction: 'outbound', url: 'https://hooks.slack.com/services/...', events: ['rca.completed'], active: true },
     ],
-    config: { webhookUrl: 'https://hooks.slack.com/services/T00/B00/xxx', defaultChannel: '#incidents', notifyOnIncident: true, notifyOnRCA: true, notifyOnSLABreach: true },
     widgets: [
       { id: 'slack-feed', name: 'Slack Activity', description: 'Recent Slack notifications sent by Obbu', defaultSize: 'sm' },
     ],

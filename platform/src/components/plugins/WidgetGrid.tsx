@@ -6,7 +6,7 @@ import { usePlugins } from '@/lib/plugins/context';
 import type { WidgetInstance, Plugin, PluginWidget } from '@/lib/plugins/types';
 import {
   GitBranch,
-  Github,
+  GitFork,
   MessageSquare,
   Siren,
   Ticket,
@@ -30,7 +30,7 @@ import {
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   GitBranch,
-  Github,
+  GitFork,
   MessageSquare,
   Siren,
   Ticket,
