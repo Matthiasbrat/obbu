@@ -292,7 +292,7 @@ function CapabilityCard({
               <TrendingUp className="w-3.5 h-3.5" />
               Key Performance Indicators
             </h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {capability.kpis.map((kpi) => (
                 <KPICard key={kpi.name} kpi={kpi} />
               ))}

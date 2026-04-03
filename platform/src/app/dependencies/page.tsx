@@ -171,7 +171,7 @@ export default function DependenciesPage() {
             )}
           >
             <div className="overflow-x-auto">
-            <div className="min-w-[700px]">
+            <div className="min-w-[500px] lg:min-w-[700px]">
             <svg
               viewBox="0 0 1050 700"
               className="w-full h-auto"

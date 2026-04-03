@@ -56,7 +56,7 @@ export default function ServiceDetail() {
     return (
       <div className="min-h-screen">
         <Header title="Service Not Found" />
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="bg-card rounded-xl border border-border-subtle p-12 text-center">
             <p className="text-muted-foreground mb-4">
               No service found with ID &quot;{serviceId}&quot;
@@ -138,7 +138,7 @@ export default function ServiceDetail() {
               <p className="text-sm text-muted-foreground max-w-xl">
                 {service.description}
               </p>
-              <div className="flex items-center gap-6 text-sm">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-sm">
                 <span className="flex items-center gap-1.5 text-muted-foreground">
                   <Users className="w-4 h-4" />
                   {service.team}
@@ -282,7 +282,7 @@ export default function ServiceDetail() {
         </div>
 
         {/* Bottom sections grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
           {/* Dependencies */}
           <div className="col-span-1 lg:col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
             <h3 className="text-sm font-semibold text-foreground">

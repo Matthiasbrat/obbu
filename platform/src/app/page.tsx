@@ -26,7 +26,7 @@ export default function DashboardPage() {
         <WidgetGrid />
 
         {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
           {/* Service health - 8 cols */}
           <div className="col-span-1 lg:col-span-8">
             <ServiceHealthGrid />
@@ -40,7 +40,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Bottom row */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
           <div className="col-span-1 lg:col-span-8">
             <BusinessImpactSummary />
           </div>

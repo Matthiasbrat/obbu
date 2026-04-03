@@ -130,7 +130,7 @@ export default function IncidentDetail() {
     return (
       <div className="min-h-screen">
         <Header title="Incident Not Found" />
-        <div className="flex flex-col items-center justify-center p-16 text-muted-foreground">
+        <div className="flex flex-col items-center justify-center p-6 sm:p-10 lg:p-16 text-muted-foreground">
           <AlertTriangle className="h-12 w-12 mb-4" />
           <p className="text-lg">Incident {params.id} not found</p>
           <Link href="/incidents" className="mt-4 text-accent-light hover:underline flex items-center gap-1">
