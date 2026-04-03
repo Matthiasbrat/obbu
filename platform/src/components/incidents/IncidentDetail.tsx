@@ -196,17 +196,17 @@ export default function IncidentDetail() {
         </Link>
       </Header>
 
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 animate-fade-in">
         {/* Header section */}
         <div className="flex items-start justify-between">
           <div className="space-y-2">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <StatusBadge status={incident.severity} size="md" />
               <StatusBadge status={incident.status} size="md" />
               <LayerBadge layer={incident.correlationLayer} />
             </div>
             <h2 className="text-xl font-semibold text-foreground">{incident.title}</h2>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
               <span className="flex items-center gap-1">
                 <Clock className="h-3.5 w-3.5" />
                 Started: {formatDate(incident.startedAt)} {formatTimestamp(incident.startedAt)}
@@ -226,7 +226,7 @@ export default function IncidentDetail() {
         </div>
 
         {/* Impact summary cards */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {impactCards.map((card) => (
             <div
               key={card.label}
@@ -246,9 +246,9 @@ export default function IncidentDetail() {
         </div>
 
         {/* Main content: 2-column layout */}
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
           {/* Left column: RCA Hypotheses + Timeline */}
-          <div className="col-span-8 space-y-6">
+          <div className="col-span-1 lg:col-span-8 space-y-4 sm:space-y-6">
             {/* RCA Hypotheses */}
             <div className="rounded-xl border border-border-subtle bg-card">
               <div className="flex items-center gap-2 border-b border-border-subtle px-5 py-4">
@@ -272,14 +272,14 @@ export default function IncidentDetail() {
                         : 'border-border-subtle bg-card-hover'
                     )}
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex flex-col sm:flex-row items-start gap-4">
                       {/* Confidence gauge */}
                       <div className="flex-shrink-0">
                         <ConfidenceGauge value={hypothesis.confidence} size="lg" />
                       </div>
 
                       {/* Content */}
-                      <div className="flex-1 space-y-3">
+                      <div className="flex-1 min-w-0 space-y-3">
                         {/* Top: badges */}
                         <div className="flex items-center gap-2 flex-wrap">
                           <LayerBadge layer={hypothesis.layer} />
@@ -385,7 +385,7 @@ export default function IncidentDetail() {
           </div>
 
           {/* Right column: Affected Services + Business Impact */}
-          <div className="col-span-4 space-y-6">
+          <div className="col-span-1 lg:col-span-4 space-y-4 sm:space-y-6">
             {/* Affected Services */}
             <div className="rounded-xl border border-border-subtle bg-card">
               <div className="flex items-center gap-2 border-b border-border-subtle px-5 py-4">

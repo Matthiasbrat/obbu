@@ -43,7 +43,7 @@ export function BusinessImpactSummary() {
                 </span>
               )}
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {cap.kpis.slice(0, 4).map((kpi) => {
                 const TrendIcon = trendIcon[kpi.trend];
                 const isGood = kpi.name === 'Cart Abandonment' || kpi.name === 'False Positive Rate'

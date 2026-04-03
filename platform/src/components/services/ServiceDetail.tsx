@@ -114,10 +114,10 @@ export default function ServiceDetail() {
         </Link>
       </Header>
 
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6 animate-fade-in">
         {/* Hero section */}
         <div className="bg-card rounded-xl border border-border-subtle p-6">
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col sm:flex-row items-start justify-between">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <StatusDot status={service.status} size="md" />
@@ -156,17 +156,19 @@ export default function ServiceDetail() {
                 )}
               </div>
             </div>
-            <Sparkline
-              data={service.sparklineData}
-              color={statusColors[service.status]}
-              width={140}
-              height={48}
-            />
+            <div className="hidden sm:block">
+              <Sparkline
+                data={service.sparklineData}
+                color={statusColors[service.status]}
+                width={140}
+                height={48}
+              />
+            </div>
           </div>
         </div>
 
         {/* Metric cards */}
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {/* SLA */}
           <div className="bg-card rounded-xl border border-border-subtle p-4 space-y-3">
             <div className="flex items-center justify-between">
@@ -280,9 +282,9 @@ export default function ServiceDetail() {
         </div>
 
         {/* Bottom sections grid */}
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Dependencies */}
-          <div className="col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
+          <div className="col-span-1 lg:col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
             <h3 className="text-sm font-semibold text-foreground">
               Dependencies
               <span className="ml-1.5 text-xs font-normal text-muted-foreground">
@@ -356,7 +358,7 @@ export default function ServiceDetail() {
           </div>
 
           {/* Business Impact */}
-          <div className="col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
+          <div className="col-span-1 lg:col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
             <h3 className="text-sm font-semibold text-foreground">
               Business Impact
             </h3>
@@ -407,7 +409,7 @@ export default function ServiceDetail() {
           </div>
 
           {/* Client Requirements */}
-          <div className="col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
+          <div className="col-span-1 lg:col-span-4 bg-card rounded-xl border border-border-subtle p-5 space-y-4">
             <h3 className="text-sm font-semibold text-foreground">
               Client Requirements
               <span className="ml-1.5 text-xs font-normal text-muted-foreground">

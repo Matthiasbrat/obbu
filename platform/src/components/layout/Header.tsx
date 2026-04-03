@@ -1,6 +1,7 @@
 'use client';
 
-import { Bell, Search } from 'lucide-react';
+import { Bell, Search, Menu } from 'lucide-react';
+import { useSidebar } from './SidebarContext';
 
 interface HeaderProps {
   title: string;
@@ -9,17 +10,29 @@ interface HeaderProps {
 }
 
 export function Header({ title, description, children }: HeaderProps) {
+  const { toggle } = useSidebar();
+
   return (
     <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border-subtle">
-      <div className="flex items-center justify-between h-16 px-8">
-        <div>
-          <h1 className="text-lg font-semibold text-foreground">{title}</h1>
-          {description && (
-            <p className="text-sm text-muted-foreground">{description}</p>
-          )}
+      <div className="flex items-center justify-between h-14 sm:h-16 px-4 sm:px-8">
+        <div className="flex items-center gap-3 min-w-0">
+          <button
+            onClick={toggle}
+            className="p-2 -ml-2 rounded-lg hover:bg-card-hover transition-colors text-muted-foreground hover:text-foreground lg:hidden"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          <div className="min-w-0">
+            <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">{title}</h1>
+            {description && (
+              <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">{description}</p>
+            )}
+          </div>
         </div>
-        <div className="flex items-center gap-4">
-          {children}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="hidden sm:flex items-center gap-2">
+            {children}
+          </div>
           <button className="p-2 rounded-lg hover:bg-card-hover transition-colors text-muted-foreground hover:text-foreground">
             <Search className="w-4 h-4" />
           </button>

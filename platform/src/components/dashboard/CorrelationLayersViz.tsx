@@ -46,7 +46,7 @@ export function CorrelationLayersViz() {
         <h2 className="text-sm font-semibold text-foreground">Three-Layer RCA Model</h2>
         <p className="text-xs text-muted-foreground mt-0.5">Correlation discovery vs accuracy tradeoff</p>
       </div>
-      <div className="p-5 space-y-4">
+      <div className="p-4 sm:p-5 space-y-4">
         {layers.map((layer) => (
           <div key={layer.name} className="space-y-2">
             <div className="flex items-center justify-between">

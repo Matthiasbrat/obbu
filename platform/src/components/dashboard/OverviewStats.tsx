@@ -71,11 +71,11 @@ const stats = [
 
 export function OverviewStats() {
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="bg-card border border-border-subtle rounded-xl px-5 py-4 hover:border-border transition-colors"
+          className="bg-card border border-border-subtle rounded-xl px-4 py-3 sm:px-5 sm:py-4 hover:border-border transition-colors"
         >
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</span>
@@ -83,7 +83,7 @@ export function OverviewStats() {
               <stat.icon className={`w-4 h-4 ${stat.color}`} />
             </div>
           </div>
-          <div className="text-2xl font-semibold font-mono tracking-tight">{stat.value}</div>
+          <div className="text-xl sm:text-2xl font-semibold font-mono tracking-tight">{stat.value}</div>
         </div>
       ))}
     </div>

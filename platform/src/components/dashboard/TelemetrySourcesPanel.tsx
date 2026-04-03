@@ -22,7 +22,8 @@ export function TelemetrySourcesPanel() {
             <div className="flex-1 min-w-0">
               <div className="text-xs font-medium text-foreground">{source.name}</div>
               <div className="text-[10px] text-muted-foreground font-mono">
-                {source.hostnameField} &rarr; hostname | {source.serviceField} &rarr; service
+                <span className="hidden sm:inline">{source.hostnameField} &rarr; hostname | {source.serviceField} &rarr; service</span>
+                <span className="sm:hidden">{source.hostnameField} &rarr; hostname</span>
               </div>
             </div>
             <div className="text-right">

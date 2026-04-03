@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { SidebarProvider } from "@/components/layout/SidebarContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
   description: "Business-to-technical observability with three-layer RCA correlation",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,10 +37,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex bg-background text-foreground">
-        <Sidebar />
-        <main className="flex-1 ml-64 min-h-screen">
-          {children}
-        </main>
+        <SidebarProvider>
+          <Sidebar />
+          <main className="flex-1 lg:ml-64 min-h-screen">
+            {children}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   );

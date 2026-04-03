@@ -50,7 +50,7 @@ function SLAGauge({ current, target, status }: { current: number; target: number
     status === 'met' ? 'bg-success/10' : status === 'at-risk' ? 'bg-warning/10' : 'bg-danger/10';
 
   return (
-    <div className="flex items-center gap-3 min-w-[180px]">
+    <div className="flex items-center gap-3 min-w-0 sm:min-w-[180px]">
       <div className={clsx('flex-1 h-2 rounded-full', bgColor)}>
         <div
           className={clsx('h-full rounded-full transition-all', barColor)}
@@ -101,21 +101,25 @@ function KPICard({ kpi }: { kpi: KPI }) {
 
 function ClientRequirementRow({ req }: { req: ClientRequirement }) {
   return (
-    <div className="flex items-center gap-4 px-4 py-3 bg-background rounded-lg border border-border-subtle">
-      <span
-        className={clsx(
-          'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium capitalize shrink-0',
-          priorityStyles[req.priority]
-        )}
-      >
-        {req.priority}
-      </span>
-      <div className="flex-1 min-w-0">
-        <div className="text-sm font-medium text-foreground truncate">{req.name}</div>
-        <div className="text-xs text-muted-foreground truncate">{req.description}</div>
+    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-3 sm:px-4 py-2 sm:py-3 bg-background rounded-lg border border-border-subtle">
+      <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+        <span
+          className={clsx(
+            'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium capitalize shrink-0',
+            priorityStyles[req.priority]
+          )}
+        >
+          {req.priority}
+        </span>
+        <div className="flex-1 min-w-0">
+          <div className="text-sm font-medium text-foreground truncate">{req.name}</div>
+          <div className="text-xs text-muted-foreground truncate">{req.description}</div>
+        </div>
       </div>
-      <SLAGauge current={req.slaCurrent} target={req.slaTarget} status={req.status} />
-      <StatusBadge status={req.status} />
+      <div className="flex items-center gap-2 sm:gap-4 pl-0 sm:pl-0">
+        <SLAGauge current={req.slaCurrent} target={req.slaTarget} status={req.status} />
+        <StatusBadge status={req.status} />
+      </div>
     </div>
   );
 }
@@ -129,7 +133,7 @@ function BusinessToTechFlow({ requirements, capability }: { requirements: Client
     .filter(Boolean);
 
   return (
-    <div className="flex items-stretch gap-0 overflow-x-auto">
+    <div className="flex flex-col sm:flex-row items-stretch gap-0 overflow-x-auto">
       {/* Left: Client Requirements */}
       <div className="flex flex-col gap-2 min-w-[220px] shrink-0">
         <div className="text-[10px] uppercase tracking-wider text-muted mb-1 font-medium">
@@ -156,16 +160,16 @@ function BusinessToTechFlow({ requirements, capability }: { requirements: Client
       </div>
 
       {/* Center: Arrow connector */}
-      <div className="flex items-center justify-center px-6 shrink-0">
+      <div className="flex items-center justify-center px-4 sm:px-6 py-3 sm:py-0 shrink-0">
         <div className="flex flex-col items-center gap-1">
-          <div className="w-px h-8 bg-border" />
+          <div className="hidden sm:block w-px h-8 bg-border" />
           <div className="flex items-center gap-1 text-muted">
-            <div className="w-12 h-px bg-border" />
-            <ArrowRight className="w-4 h-4 text-accent-light" />
-            <div className="w-12 h-px bg-border" />
+            <div className="hidden sm:block w-12 h-px bg-border" />
+            <ArrowRight className="w-4 h-4 text-accent-light rotate-90 sm:rotate-0" />
+            <div className="hidden sm:block w-12 h-px bg-border" />
           </div>
           <div className="text-[10px] text-muted-foreground">maps to</div>
-          <div className="w-px h-8 bg-border" />
+          <div className="hidden sm:block w-px h-8 bg-border" />
         </div>
       </div>
 
@@ -223,7 +227,7 @@ function CapabilityCard({
       {/* Header row */}
       <button
         onClick={onToggle}
-        className="w-full flex items-center gap-4 px-5 py-4 text-left hover:bg-card-hover/50 transition-colors rounded-xl"
+        className="w-full flex items-center gap-4 px-3 sm:px-5 py-3 sm:py-4 text-left hover:bg-card-hover/50 transition-colors rounded-xl"
       >
         {isExpanded ? (
           <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0" />
@@ -252,7 +256,7 @@ function CapabilityCard({
 
       {/* Expanded content */}
       {isExpanded && (
-        <div className="px-5 pb-5 space-y-6 animate-slide-up">
+        <div className="px-3 sm:px-5 pb-4 sm:pb-5 space-y-4 sm:space-y-6 animate-slide-up">
           <div className="border-t border-border-subtle" />
 
           {/* Client Requirements section */}
@@ -274,7 +278,7 @@ function CapabilityCard({
               <Target className="w-3.5 h-3.5" />
               Business-to-Technical Flow
             </h3>
-            <div className="bg-background rounded-lg border border-border-subtle p-5">
+            <div className="bg-background rounded-lg border border-border-subtle p-3 sm:p-5">
               <BusinessToTechFlow
                 requirements={capability.clientRequirements}
                 capability={capability}
@@ -288,7 +292,7 @@ function CapabilityCard({
               <TrendingUp className="w-3.5 h-3.5" />
               Key Performance Indicators
             </h3>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {capability.kpis.map((kpi) => (
                 <KPICard key={kpi.name} kpi={kpi} />
               ))}
@@ -364,13 +368,13 @@ export default function BusinessTracingPage() {
         title="Business Tracing"
         description="Client requirements to technical delivery mapping"
       />
-      <div className="p-8 space-y-6 animate-fade-in">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 animate-fade-in">
         {/* Summary cards */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {summaryCards.map((card) => (
             <div
               key={card.label}
-              className="bg-card border border-border-subtle rounded-xl px-5 py-4 flex items-center gap-4"
+              className="bg-card border border-border-subtle rounded-xl px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-4"
             >
               <div className={clsx('w-10 h-10 rounded-lg flex items-center justify-center', card.bg)}>
                 <card.icon className={clsx('w-5 h-5', card.color)} />
