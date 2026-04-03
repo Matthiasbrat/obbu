@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { SidebarProvider } from "@/components/layout/SidebarContext";
+import { ThemeProvider } from "@/components/layout/ThemeContext";
 import { PluginProvider } from "@/lib/plugins/context";
 
 const geistSans = localFont({
@@ -36,16 +37,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex bg-background text-foreground">
-        <PluginProvider>
-          <SidebarProvider>
-            <Sidebar />
-            <main className="flex-1 lg:ml-64 min-h-screen">
-              {children}
-            </main>
-          </SidebarProvider>
-        </PluginProvider>
+        <ThemeProvider>
+          <PluginProvider>
+            <SidebarProvider>
+              <Sidebar />
+              <main className="flex-1 lg:ml-64 min-h-screen">
+                {children}
+              </main>
+            </SidebarProvider>
+          </PluginProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

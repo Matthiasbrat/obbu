@@ -1,7 +1,8 @@
 'use client';
 
-import { Bell, Search, Menu } from 'lucide-react';
+import { Bell, Search, Menu, Sun, Moon } from 'lucide-react';
 import { useSidebar } from './SidebarContext';
+import { useTheme } from './ThemeContext';
 
 interface HeaderProps {
   title: string;
@@ -11,6 +12,7 @@ interface HeaderProps {
 
 export function Header({ title, description, children }: HeaderProps) {
   const { toggle } = useSidebar();
+  const { theme, toggle: toggleTheme } = useTheme();
 
   return (
     <header className="sticky top-0 z-30 bg-background/80 backdrop-blur-xl border-b border-border-subtle">
@@ -33,6 +35,13 @@ export function Header({ title, description, children }: HeaderProps) {
           <div className="hidden sm:flex items-center gap-2">
             {children}
           </div>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg hover:bg-card-hover transition-colors text-muted-foreground hover:text-foreground"
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
           <button className="p-2 rounded-lg hover:bg-card-hover transition-colors text-muted-foreground hover:text-foreground">
             <Search className="w-4 h-4" />
           </button>

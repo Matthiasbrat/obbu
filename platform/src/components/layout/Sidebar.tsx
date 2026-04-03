@@ -12,9 +12,12 @@ import {
   Radio,
   X,
   Puzzle,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useSidebar } from './SidebarContext';
+import { useTheme } from './ThemeContext';
 
 const navigation = [
   { name: 'Overview', href: '/', icon: LayoutDashboard },
@@ -28,6 +31,7 @@ const navigation = [
 export function Sidebar() {
   const pathname = usePathname();
   const { isOpen, close } = useSidebar();
+  const { theme, toggle: toggleTheme } = useTheme();
 
   return (
     <>
@@ -92,11 +96,20 @@ export function Sidebar() {
           })}
         </nav>
 
-        {/* Telemetry status */}
-        <div className="px-4 py-4 border-t border-border-subtle">
-          <div className="flex items-center gap-2 mb-3">
-            <Radio className="w-3.5 h-3.5 text-success animate-pulse-dot" />
-            <span className="text-xs text-muted-foreground">Telemetry Active</span>
+        {/* Telemetry status + theme toggle */}
+        <div className="px-4 py-4 border-t border-border-subtle space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Radio className="w-3.5 h-3.5 text-success animate-pulse-dot" />
+              <span className="text-xs text-muted-foreground">Telemetry Active</span>
+            </div>
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 rounded-lg hover:bg-card-hover transition-colors text-muted-foreground hover:text-foreground"
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            </button>
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="bg-background rounded-md px-2.5 py-2">
